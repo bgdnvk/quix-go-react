@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: ./sse-backend
+    ports:
+      - "8080:8080"
+  frontend:
+    build:
+      context: ./sse-frontend
+    ports:
+      - "5173:80" # Exposes Nginx (Frontend) on port 5173
+    depends_on:
+      - backend
